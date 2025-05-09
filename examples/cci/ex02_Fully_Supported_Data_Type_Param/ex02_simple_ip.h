@@ -31,7 +31,7 @@
 #include <string>
 #include "xreport.hpp"
 
- #define MK64(a, b) (((int64_t)(a)<< 32) | (b))
+ #define MK64(a, b) (((long long)(a)<< 32) | (b))
 
 /**
  *  @class  ex02_simple_ip
@@ -97,7 +97,7 @@ SC_MODULE(ex02_simple_ip) {
   cci::cci_param<int> int_param; ///< int parameter
   cci::cci_param<unsigned int> uint_param; ///< unsigned int parameter
   cci::cci_param<short int> int16_param;  ///< 16-bit integer parameter
-  cci::cci_param<int64_t> int64_param; ///< 64-bit integer parameter
+  cci::cci_param<long long> int64_param; ///< 64-bit integer parameter
   cci::cci_param<float> float_param; ///< float parameter
   cci::cci_param<double> double_param; ///< double parameter
   cci::cci_param<std::string> string_param;  ///< string parameter
