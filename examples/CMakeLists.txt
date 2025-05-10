@@ -41,7 +41,7 @@
 cmake_minimum_required (VERSION 3.5)
 
 if (NOT TARGET check)
-   add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} -C "${CMAKE_BUILD_TYPE}")
+   add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 endif()
 # Only built under "check" target
 #  - see https://cmake.org/Wiki/CMakeEmulateMakeCheck
@@ -166,7 +166,7 @@ function (add_test_exe NAME)
   target_link_libraries (${TEST_NAME} SystemC::systemc cci)
   configure_and_add_test (${TEST_NAME})
 endfunction()
-  
+
 
 #########################################################################
 ## Add the examples.

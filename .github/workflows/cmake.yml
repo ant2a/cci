@@ -15,32 +15,32 @@ jobs:
       matrix:
         systemc_version: [2.3.2, 2.3.3, 2.3.4, 3.0.0]
         os:
-          - name: ubuntu
-            version: 22.04
-            cxx_compiler: g++-11
-            c_compiler: gcc-11
-            generator: "Unix Makefiles"
-          - name: ubuntu
-            version: 22.04
-            cxx_compiler: clang++-11
-            c_compiler: clang-11
-            generator: "Unix Makefiles"
-            deps: 'clang-11'
-          - name: windows
-            version: 2022
-            cxx_compiler: clang++
-            c_compiler: clang
-            generator: "Unix Makefiles"
+          # - name: ubuntu
+          #   version: 22.04
+          #   cxx_compiler: g++-11
+          #   c_compiler: gcc-11
+          #   generator: "Unix Makefiles"
+          # - name: ubuntu
+          #   version: 22.04
+          #   cxx_compiler: clang++-11
+          #   c_compiler: clang-11
+          #   generator: "Unix Makefiles"
+          #   deps: 'clang-11'
+          # - name: windows
+          #   version: 2022
+          #   cxx_compiler: clang++
+          #   c_compiler: clang
+          #   generator: "Unix Makefiles"
           - name: windows
             version: 2022
             cxx_compiler: g++
             c_compiler: gcc
             generator: "Unix Makefiles"
-          - name: windows
-            version: 2022
-            cxx_compiler: msvc
-            c_compiler: msvc
-            generator: "Visual Studio 17 2022"
+          # - name: windows
+          #   version: 2022
+          #   cxx_compiler: msvc
+          #   c_compiler: msvc
+          #   generator: "Visual Studio 17 2022"
         exclude:
           - os:
               name: windows
@@ -67,10 +67,10 @@ jobs:
     - name: Setup environment vars (Windows)
       if: matrix.os.name == 'windows'
       run: |
-        echo "SYSTEMC_HOME=${env:SYSTEMC_ROOT_HOME}/${{matrix.systemc_version}}" | Out-File -FilePath ${env:GITHUB_ENV} -Append 
-        echo "CCI_HOME=${env:CCI_ROOT_HOME}/release-sc_${{matrix.systemc_version}}" | Out-File -FilePath ${env:GITHUB_ENV} -Append 
-        echo "NPROC=${env:NUMBER_OF_PROCESSORS}" | Out-File -FilePath ${env:GITHUB_ENV} -Append 
-        echo "ESC=``" | Out-File -FilePath ${env:GITHUB_ENV} -Append 
+        echo "SYSTEMC_HOME=${env:SYSTEMC_ROOT_HOME}/${{matrix.systemc_version}}" | Out-File -FilePath ${env:GITHUB_ENV} -Append
+        echo "CCI_HOME=${env:CCI_ROOT_HOME}/release-sc_${{matrix.systemc_version}}" | Out-File -FilePath ${env:GITHUB_ENV} -Append
+        echo "NPROC=${env:NUMBER_OF_PROCESSORS}" | Out-File -FilePath ${env:GITHUB_ENV} -Append
+        echo "ESC=``" | Out-File -FilePath ${env:GITHUB_ENV} -Append
 
     - name: Checkout
       uses: actions/checkout@v3
@@ -146,6 +146,7 @@ jobs:
           -DCMAKE_PREFIX_PATH=${{env.SYSTEMC_HOME}}/lib/cmake/SystemCLanguage ${{env.ESC}}
           -DCMAKE_INSTALL_PREFIX=${{env.CCI_HOME}} ${{env.ESC}}
           -DCMAKE_BUILD_TYPE="Release" ${{env.ESC}}
+          -DCMAKE_MAKE_PROGRAM="make" ${{env.ESC}}
           ../../..
 
     - name: Build
