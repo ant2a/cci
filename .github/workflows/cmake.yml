@@ -41,6 +41,19 @@ jobs:
             cxx_compiler: msvc
             c_compiler: msvc
             generator: "Visual Studio 17 2022"
+        exclude:
+          - os:
+              name: windows
+              generator: "Unix Makefiles"
+            systemc_version: 2.3.2
+          - os:
+              name: windows
+              generator: "Unix Makefiles"
+            systemc_version: 2.3.3
+          - os:
+              name: windows
+              generator: "Unix Makefiles"
+            systemc_version: 2.3.4
     runs-on: ${{matrix.os.name}}-${{matrix.os.version}}
 
     steps:
