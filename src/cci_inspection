@@ -1,0 +1,6 @@
+#ifndef CCI_HEADER_INSPECTION_INCLUDED_
+#define CCI_HEADER_INSPECTION_INCLUDED_
+
+#include "cci/inspection/cci_inspection.h"
+
+#endif // CCI_HEADER_INSPECTION_INCLUDED_

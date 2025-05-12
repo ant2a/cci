@@ -170,7 +170,7 @@ endfunction()
 
 #########################################################################
 ## Add the examples.
-##########################################################################
+#########################################################################
 if (SYSTEMCCCI_BUILD_TESTS)
   include_directories(cci/common/inc/)
 
@@ -179,4 +179,22 @@ if (SYSTEMCCCI_BUILD_TESTS)
   foreach(example ${EXAMPLES})
     add_test_exe(${example})
   endforeach()
+endif()
+
+
+#########################################################################
+## Add the inspection tests.
+#########################################################################
+function(add_inspection_test TEST_NAME TEST_EXE SRCS)
+  add_executable(${TEST_EXE} EXCLUDE_FROM_ALL ${SRCS})
+  target_link_libraries(${TEST_EXE} PRIVATE Catch2::Catch2WithMain cci)
+  add_test(NAME ${TEST_NAME} COMMAND ${TEST_EXE})
+  add_dependencies(check ${TEST_EXE})
+endfunction(add_inspection_test)
+
+if (SYSTEMCCCI_BUILD_TESTS)
+  add_subdirectory(Catch2-3.8.0)
+
+  add_inspection_test("inspection/test01-basic" test01-basic inspection/test01-basic.cpp)
+  add_inspection_test("inspection/test02-weak-link" test02-weak-link inspection/test02-weak-link.cpp)
 endif()
