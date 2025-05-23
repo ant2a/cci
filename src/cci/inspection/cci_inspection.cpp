@@ -1,4 +1,5 @@
 #include "cci_inspection.h"
+#include "cci/core/cci_cmnhdr.h"
 
 #include <string>
 #include <unordered_map>
@@ -56,7 +57,7 @@ private:
   std::string m_name;
 };
 
-__attribute__((weak)) cci::experimental::inspection::discovery_if *
+CCI_DECL_WEAK cci::experimental::inspection::discovery_if *
 cci::experimental::inspection::get_discovery_if(uint64_t api_version) {
   if (api_version != CCI_INSPECTION_API_VERSION) {
     return nullptr;

@@ -124,4 +124,13 @@
 
 #define CCI_TPLEXTERN_ extern
 
+
+#if defined(__GNUC__) || defined(__clang__) // GCC or Clang
+#define CCI_DECL_WEAK __attribute__((weak))
+#elif defined(_MSC_VER) // MSVC
+#define CCI_DECL_WEAK __declspec(selectany)
+#else
+#define CCI_DECL_WEAK #error "Unknown compiler!"
+#endif
+
 #endif // CCI_CORE_CCI_CMNHDR_H_INCLUDED_
