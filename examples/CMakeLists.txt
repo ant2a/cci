@@ -170,7 +170,7 @@ endfunction()
 
 #########################################################################
 ## Add the examples.
-##########################################################################
+#########################################################################
 if (SYSTEMCCCI_BUILD_TESTS)
   include_directories(cci/common/inc/)
 
@@ -179,4 +179,13 @@ if (SYSTEMCCCI_BUILD_TESTS)
   foreach(example ${EXAMPLES})
     add_test_exe(${example})
   endforeach()
+endif()
+
+
+#########################################################################
+## Add the inspection tests.
+#########################################################################
+if (SYSTEMCCCI_BUILD_TESTS)
+  add_subdirectory(Catch2-3.8.0)
+  add_subdirectory(inspection/test01-basic)
 endif()
