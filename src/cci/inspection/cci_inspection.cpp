@@ -57,9 +57,9 @@ private:
   std::string m_name;
 };
 
-#if defined (__GNUC__) || defined (__clang__)
-__attribute__((weak))
-#endif
+// #if (defined(__GNUC__) || defined(__clang__))
+// __attribute__((weak))
+// #endif
 cci::experimental::inspection::discovery_if *
 cci::experimental::inspection::get_discovery_if(uint64_t api_version) {
   if (api_version != CCI_INSPECTION_API_VERSION) {
