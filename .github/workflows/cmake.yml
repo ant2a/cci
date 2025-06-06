@@ -137,7 +137,7 @@ jobs:
           -G "${{matrix.os.generator}}" ${{env.ESC}}
           -DCMAKE_CXX_COMPILER=${{matrix.os.cxx_compiler}} ${{env.ESC}}
           -DCMAKE_C_COMPILER=${{matrix.os.c_compiler}} ${{env.ESC}}
-          -DCMAKE_CXX_STANDARD=${{startsWith(matrix.systemc_version, '2.') && '11' || '17'}} ${{env.ESC}}
+          -DCMAKE_CXX_STANDARD=17 ${{env.ESC}}
           -DCMAKE_INSTALL_PREFIX=${{env.SYSTEMC_HOME}} ${{env.ESC}}
           -DCMAKE_BUILD_TYPE="Release" ${{env.ESC}}
           ..
@@ -153,7 +153,7 @@ jobs:
           -DSYSTEMCCCI_BUILD_TESTS=ON ${{env.ESC}}
           -DCMAKE_CXX_COMPILER=${{matrix.os.cxx_compiler}} ${{env.ESC}}
           -DCMAKE_C_COMPILER=${{matrix.os.c_compiler}} ${{env.ESC}}
-          -DCMAKE_CXX_STANDARD=${{startsWith(matrix.systemc_version, '2.') && '11' || '17'}} ${{env.ESC}}
+          -DCMAKE_CXX_STANDARD=17 ${{env.ESC}}
           -DCMAKE_PREFIX_PATH=${{env.SYSTEMC_HOME}}/lib/cmake/SystemCLanguage ${{env.ESC}}
           -DCMAKE_INSTALL_PREFIX=${{env.CCI_HOME}} ${{env.ESC}}
           -DCMAKE_BUILD_TYPE="Release" ${{env.ESC}}
@@ -174,4 +174,4 @@ jobs:
     - name: Test (mingw-gcc)
       if: matrix.os.name == 'windows' && matrix.os.c_compiler == 'gcc'
       run: |
-        echo "::warning file=.github/workflows/cmake.yml,::Tests are disabled on ${{matrix.os.name}}-${{matrix.os.c_compiler}}"
+        echo "::warning file=.github/workflows/cmake.yml,::Tests (examples) are disabled on ${{matrix.os.name}}-${{matrix.os.c_compiler}}"

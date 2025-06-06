@@ -89,6 +89,8 @@ add_library (cci
                         cci/cfg/cci_originator.h
                         cci/cfg/cci_param_callbacks.h
                         cci/cfg/cci_param_if.h
+                        cci/inspection/cci_inspection.h
+                        cci/inspection/cci_inspection.cpp
                         )
 
 # Find SystemC package - this will generate appropriate warnings if
@@ -127,7 +129,7 @@ target_compile_options(
 target_compile_features(
   cci
   PUBLIC
-  cxx_std_11)
+  cxx_std_17)
 
 target_include_directories(cci
   PUBLIC
@@ -170,6 +172,6 @@ install (DIRECTORY ./
          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
          COMPONENT dev
          FILES_MATCHING PATTERN "*.hpp")
-install (FILES "cci_configuration"
+install (FILES "cci_configuration" "cci_inspection"
          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
          COMPONENT dev)

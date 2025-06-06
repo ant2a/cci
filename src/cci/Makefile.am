@@ -10,6 +10,7 @@ LIBADD =
 # include file lists for sub-directories
 include cfg/files.am
 include core/files.am
+include inspection/files.am
 include utils/files.am
 	
 localincludedir = $(includedir)/cci

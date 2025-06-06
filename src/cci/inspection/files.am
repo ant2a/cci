@@ -1,0 +1,9 @@
+H_FILES += \
+	inspection/cci_inspection.h
+
+CXX_FILES += \
+    inspection/cci_inspection.cpp
+
+INCDIRS += inspection
+
+## Taf!

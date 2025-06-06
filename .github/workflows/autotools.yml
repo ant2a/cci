@@ -81,7 +81,7 @@ jobs:
         mkdir build && cd build
         CXX=${{matrix.os.cxx_compiler}} \
         C=${{matrix.os.c_compiler}} \
-        CXXFLAGS="$CXXFLAGS -std=c++11" \
+        CXXFLAGS="$CXXFLAGS -std=c++17" \
           ../configure \
             --prefix=${{env.SYSTEMC_HOME}} \
             --enable-optimize \
@@ -95,7 +95,7 @@ jobs:
         mkdir -p ${{env.CCI_HOME}}/build && cd ${{env.CCI_HOME}}/build
         CXX=${{matrix.os.cxx_compiler}} \
         C=${{matrix.os.c_compiler}} \
-        CXXFLAGS="$CXXFLAGS -std=c++11" \
+        CXXFLAGS="$CXXFLAGS -std=c++17" \
         LD_LIBRARY_PATH=${{env.SYSTEMC_HOME}}/lib-linux64 \
           ../../../configure \
             --prefix=${{env.CCI_HOME}} \
